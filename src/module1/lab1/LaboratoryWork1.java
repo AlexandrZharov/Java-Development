@@ -22,7 +22,10 @@ public class LaboratoryWork1 {
 
     static String findLongestWord(String text) {
         String result = "";
-        String[] wordsArray = text.trim().split(" ");
+        String[] wordsArray = text.trim()
+                .replaceAll("[^a-zA-Z0-9\\s'-]","")
+                .replaceAll("\n", "")
+                .split(" ");
         for (String word: wordsArray) {
             if (word.length() > result.length()) result = word;
         }
@@ -85,9 +88,10 @@ public class LaboratoryWork1 {
 
         //3. Take array of distinct words from Harry Potter. Create an array of hashes.
         int[] hashArray = createArrayOfHashOfWords(text);
-        System.out.println("Number of words: " + hashArray.length);
+        System.out.println("Number of hashes: " + hashArray.length);
 
         //4. Count the intersections
-        System.out.println("Number of words with at least one duplicate: " + findNumberOfDuplicates(hashArray));
+        int numberOfDuplicates = findNumberOfDuplicates(hashArray);
+        System.out.println("Number of words with at least one duplicate: " + numberOfDuplicates);
     }
 }
