@@ -2,6 +2,13 @@ package module1.arrays;
 
 import java.util.Arrays;
 
+/**
+ * HarryPotter Main
+ *
+ * Version info 1
+ *
+ * Copyright Aleksandr Zharov KHNEU
+ */
 public class HarryPotter {
 
     static String text = "Harry Potter and the Sorcerer's Stone \n" +

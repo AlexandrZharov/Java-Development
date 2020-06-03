@@ -1,5 +1,12 @@
 package module1.cycles;
 
+/**
+ * PrimitiveTypes Main
+ *
+ * Version info 1
+ *
+ * Copyright Aleksandr Zharov KHNEU
+ */
 public class PrimitiveTypes {;
     
     public static void main(String[] args) {

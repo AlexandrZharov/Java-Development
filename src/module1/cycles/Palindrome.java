@@ -1,5 +1,12 @@
 package module1.cycles;
 
+/**
+ * Palindrome Main
+ *
+ * Version info 1
+ *
+ * Copyright Aleksandr Zharov KHNEU
+ */
 public class Palindrome {
 
     static String text = "A man, a plan, a canal – Panama";

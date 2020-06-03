@@ -2,6 +2,13 @@ package module1.lab1;
 
 import java.util.HashSet;
 
+/**
+ * LaboratoryWork1 Main
+ *
+ * Version info 1
+ *
+ * Copyright Aleksandr Zharov KHNEU
+ */
 public class LaboratoryWork1 {
 
     static String text = "Harry Potter and the Sorcerer's Stone \n" +

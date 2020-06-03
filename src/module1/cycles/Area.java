@@ -1,5 +1,12 @@
 package module1.cycles;
 
+/**
+ * Area Main
+ *
+ * Version info 1
+ *
+ * Copyright Aleksandr Zharov KHNEU
+ */
 public class Area {
 
     public static void main(String[] args) {
