@@ -1,5 +1,7 @@
 package module2.polymorphism;
 
+import java.util.Map;
+
 /**
  * Cube class
  *
@@ -27,6 +29,10 @@ public class Cube implements ThreeDimensionalObject,Printable {
 
     Cube(int side) {
         this.side = side;
+    }
+
+    public Cube(Map<String, Object> params) {
+        this.side = (int) params.get("side");
     }
 
     public int getSide() {
