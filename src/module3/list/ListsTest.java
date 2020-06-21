@@ -155,73 +155,73 @@ public class ListsTest {
         start = LocalDateTime.now();
         System.out.println("LinkedList update from the end start: " + start);
         for (int i = 0; i < operateNumbersQuantity; i++) {
-            linkedIntegers.set(arrayIntegers.size() - 1 - i, operateNumbersQuantity - i);
+            linkedIntegers.set(linkedIntegers.size() - 1 - i, operateNumbersQuantity - i);
         }
         finish = LocalDateTime.now();
         System.out.println("LinkedList update from the end finish: " + finish);
         System.out.println("Total time: " + Duration.between(start, finish).toMillis());
 
         //4. Delete 1000 elements from the beginning, from the middle and from the end of ones. Compare time intervals.
-        //Update 1000 elements from the beginning of ArrayList
+        //Delete 1000 elements from the beginning of ArrayList
         start = LocalDateTime.now();
-        System.out.println("ArrayList update from the beginning start: " + start);
+        System.out.println("ArrayList delete from the beginning start: " + start);
         for (int i = 0; i < operateNumbersQuantity; i++) {
-            arrayIntegers.set(i, operateNumbersQuantity - i);
+            arrayIntegers.remove(0);
         }
         finish = LocalDateTime.now();
-        System.out.println("ArrayList update from the beginning finish: " + finish);
+        System.out.println("ArrayList delete from the beginning finish: " + finish);
         System.out.println("Total time: " + Duration.between(start, finish).toMillis());
 
-        //Update 1000 elements from the middle of ArrayList
+        //Delete 1000 elements from the middle of ArrayList
         start = LocalDateTime.now();
-        System.out.println("ArrayList update from the middle start: " + start);
+        System.out.println("ArrayList delete from the middle start: " + start);
         middleOfList = arrayIntegers.size()/2;
         for (int i = 0; i < operateNumbersQuantity; i++) {
-            arrayIntegers.set(middleOfList+i, operateNumbersQuantity - i);
+            arrayIntegers.remove(middleOfList);
         }
         finish = LocalDateTime.now();
-        System.out.println("ArrayList update from the middle finish: " + finish);
+        System.out.println("ArrayList delete from the middle finish: " + finish);
         System.out.println("Total time: " + Duration.between(start, finish).toMillis());
 
-        //Update 1000 elements from the end of ArrayList
+        //Delete 1000 elements from the end of ArrayList
         start = LocalDateTime.now();
-        System.out.println("ArrayList update from the end start: " + start);
+        System.out.println("ArrayList delete from the end start: " + start);
         for (int i = 0; i < operateNumbersQuantity; i++) {
-            arrayIntegers.set(arrayIntegers.size() - 1 - i, operateNumbersQuantity - i);
+            arrayIntegers.remove(arrayIntegers.size()-1);
         }
         finish = LocalDateTime.now();
-        System.out.println("ArrayList update from the end finish: " + finish);
+        System.out.println("ArrayList delete from the end finish: " + finish);
         System.out.println("Total time: " + Duration.between(start, finish).toMillis());
 
-        //Update 1000 elements from the beginning of LinkedList
+        //Delete 1000 elements from the beginning of LinkedList
         start = LocalDateTime.now();
-        System.out.println("LinkedList update from the beginning start: " + start);
+        System.out.println("LinkedList delete from the beginning start: " + start);
         for (int i = 0; i < operateNumbersQuantity; i++) {
-            linkedIntegers.set(i, operateNumbersQuantity - i);
+            linkedIntegers.remove(0);
         }
         finish = LocalDateTime.now();
-        System.out.println("LinkedList update from the beginning finish: " + finish);
+        System.out.println("LinkedList delete from the beginning finish: " + finish);
         System.out.println("Total time: " + Duration.between(start, finish).toMillis());
 
-        //Update 1000 elements from the middle of LinkedList
+        //Delete 1000 elements from the middle of LinkedList
         start = LocalDateTime.now();
-        System.out.println("LinkedList update from the middle start: " + start);
+        System.out.println("LinkedList delete from the middle start: " + start);
         middleOfList = linkedIntegers.size()/2;
         for (int i = 0; i < operateNumbersQuantity; i++) {
-            linkedIntegers.set(middleOfList+i, operateNumbersQuantity - i);
+            linkedIntegers.remove(middleOfList);
         }
         finish = LocalDateTime.now();
-        System.out.println("LinkedList update from the middle finish: " + finish);
+        System.out.println("LinkedList delete from the middle finish: " + finish);
         System.out.println("Total time: " + Duration.between(start, finish).toMillis());
 
-        //Update 1000 elements from the end of LinkedList
+        //Delete 1000 elements from the end of LinkedList
         start = LocalDateTime.now();
-        System.out.println("LinkedList update from the end start: " + start);
+        System.out.println("LinkedList delete from the end start: " + start);
         for (int i = 0; i < operateNumbersQuantity; i++) {
-            linkedIntegers.set(arrayIntegers.size() - 1 - i, operateNumbersQuantity - i);
+            linkedIntegers.remove(linkedIntegers.size() - 1);
         }
         finish = LocalDateTime.now();
-        System.out.println("LinkedList update from the end finish: " + finish);
+        System.out.println("LinkedList delete from the end finish: " + finish);
         System.out.println("Total time: " + Duration.between(start, finish).toMillis());
 
 //        start = LocalDateTime.now();
