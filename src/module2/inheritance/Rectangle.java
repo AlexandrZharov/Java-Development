@@ -11,13 +11,15 @@ package module2.inheritance;
  *
  * 1. Create a child from the class Rectangle.
  */
-public class Rectangle extends Shape{
+public class Rectangle{
 
     private int width;
     private int height;
 
-    public Rectangle(int height, int width, String color) {
-        super("Rectangle", color);
+    public Rectangle() {
+    }
+
+    public Rectangle(int height, int width) {
         this.height = height;
         this.width = width;
     }

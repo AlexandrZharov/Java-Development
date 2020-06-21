@@ -3,7 +3,7 @@ package module2.patterns;
 import java.time.LocalDate;
 
 /**
- * CubeFactory class
+ * Student POJO class
  *
  * Version info 1
  *
