@@ -50,8 +50,8 @@ public class Door extends Rectangle {
         this.manufacturer = manufacturer;
     }
 
-    public Door(int height, int width, String material, double weight, double price, String manufacturer, String color) {
-        super(height, width, color);
+    public Door(int height, int width, String material, double weight, double price, String manufacturer) {
+        super(height, width);
         this.material = material;
         this.weight = weight;
         this.price = price;

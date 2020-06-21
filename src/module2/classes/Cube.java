@@ -24,7 +24,7 @@ public class Cube {
     private int side;
 
     //1.
-    Cube(int side) {
+    public Cube(int side) {
         this.side = side;
     }
 
