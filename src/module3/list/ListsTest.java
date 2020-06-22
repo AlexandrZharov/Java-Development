@@ -6,6 +6,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class ListsTest {
 
@@ -13,231 +15,185 @@ public class ListsTest {
         int totalNumbersQuantity = 100000;
         int operateNumbersQuantity = 1000;
         //1.  Create ArrayList and LinkedList containing 100 000 Integer elements. Compare time intervals.
-        LocalDateTime start = LocalDateTime.now();
-        System.out.println("ArrayList creation start: " + start);
         List<Integer> arrayIntegers = new ArrayList<>();
-        for (int i = 0; i < totalNumbersQuantity; i++) {
-            arrayIntegers.add(i);
-        }
-        LocalDateTime finish = LocalDateTime.now();
-        System.out.println("ArrayList creation finish: " + finish);
-        System.out.println("Total time: " + Duration.between(start, finish).toMillis());
+        loggingTimeOfOperations("ArrayList creation", arrayIntegers, (list) -> {
+            for (int i = 0; i < totalNumbersQuantity; i++) {
+                list.add(i);
+            }
+            return list;
+        });
 
-        start = LocalDateTime.now();
-        System.out.println("LinkedList creation start: " + start);
         List<Integer> linkedIntegers = new LinkedList<>();
-        for (int i = 0; i < totalNumbersQuantity; i++) {
-            linkedIntegers.add(i);
-        }
-        finish = LocalDateTime.now();
-        System.out.println("LinkedList creation finish: " + finish);
-        System.out.println("Total time: " + Duration.between(start, finish).toMillis());
+        loggingTimeOfOperations("LinkedList creation", linkedIntegers, (list) -> {
+            for (int i = 0; i < totalNumbersQuantity; i++) {
+                list.add(i);
+            }
+            return list;
+        });
 
         //2. Insert new 1000 elements on the beginning, on the middle and on the end of ones. Compare time intervals.
 
         //Insert new 1000 elements on the beginning of ArrayList
-        start = LocalDateTime.now();
-        System.out.println("ArrayList insert on the beginning start: " + start);
-        for (int i = 0; i < operateNumbersQuantity; i++) {
-            arrayIntegers.add(0, i);
-        }
-        finish = LocalDateTime.now();
-        System.out.println("ArrayList insert on the beginning finish: " + finish);
-        System.out.println("Total time: " + Duration.between(start, finish).toMillis());
+        loggingTimeOfOperations("ArrayList insert on the beginning", arrayIntegers, (list) -> {
+            int middleOfList = list.size()/2;
+            for (int i = 0; i < operateNumbersQuantity; i++) {
+                list.add(0, i);
+            }
+            return list;
+        });
 
         //Insert new 1000 elements on the middle of ArrayList
-        start = LocalDateTime.now();
-        System.out.println("ArrayList insert on the middle start: " + start);
-        int middleOfList = arrayIntegers.size()/2;
-        for (int i = 0; i < operateNumbersQuantity; i++) {
-            arrayIntegers.add(middleOfList, i);
-        }
-        finish = LocalDateTime.now();
-        System.out.println("ArrayList insert on the middle finish: " + finish);
-        System.out.println("Total time: " + Duration.between(start, finish).toMillis());
+        loggingTimeOfOperations("ArrayList insert on the middle", arrayIntegers, (list) -> {
+            int middleOfList = list.size()/2;
+            for (int i = 0; i < operateNumbersQuantity; i++) {
+                list.add(middleOfList, i);
+            }
+            return list;
+        });
 
         //Insert new 1000 elements on the end of ArrayList
-        start = LocalDateTime.now();
-        System.out.println("ArrayList insert on the end start: " + start);
-        for (int i = 0; i < operateNumbersQuantity; i++) {
-            arrayIntegers.add(i);
-        }
-        finish = LocalDateTime.now();
-        System.out.println("ArrayList insert on the end finish: " + finish);
-        System.out.println("Total time: " + Duration.between(start, finish).toMillis());
+        loggingTimeOfOperations("ArrayList insert on the end", arrayIntegers, (list) -> {
+            for (int i = 0; i < operateNumbersQuantity; i++) {
+                list.add(i);
+            }
+            return list;
+        });
 
         //Insert new 1000 elements on the beginning of LinkedList
-        start = LocalDateTime.now();
-        System.out.println("LinkedList insert on the beginning start: " + start);
-        for (int i = 0; i < operateNumbersQuantity; i++) {
-            linkedIntegers.add(0, i);
-        }
-        finish = LocalDateTime.now();
-        System.out.println("LinkedList insert on the beginning finish: " + finish);
-        System.out.println("Total time: " + Duration.between(start, finish).toMillis());
+        loggingTimeOfOperations("LinkedList insert on the beginning", linkedIntegers, (list) -> {
+            for (int i = 0; i < operateNumbersQuantity; i++) {
+                list.add(0, i);
+            }
+            return list;
+        });
 
         //Insert new 1000 elements on the middle of LinkedList
-        start = LocalDateTime.now();
-        System.out.println("LinkedList insert on the middle start: " + start);
-        middleOfList = linkedIntegers.size()/2;
-        for (int i = 0; i < operateNumbersQuantity; i++) {
-            linkedIntegers.add(middleOfList, i);
-        }
-        finish = LocalDateTime.now();
-        System.out.println("LinkedList insert on the middle finish: " + finish);
-        System.out.println("Total time: " + Duration.between(start, finish).toMillis());
+        loggingTimeOfOperations("LinkedList insert on the middle", linkedIntegers, (list) -> {
+            int middleOfList = list.size()/2;
+            for (int i = 0; i < operateNumbersQuantity; i++) {
+                list.add(middleOfList, i);
+            }
+            return list;
+        });
 
         //Insert new 1000 elements on the end of LinkedList
-        start = LocalDateTime.now();
-        System.out.println("LinkedList insert on the end start: " + start);
-        for (int i = 0; i < operateNumbersQuantity; i++) {
-            linkedIntegers.add(i);
-        }
-        finish = LocalDateTime.now();
-        System.out.println("LinkedList insert on the end finish: " + finish);
-        System.out.println("Total time: " + Duration.between(start, finish).toMillis());
+        loggingTimeOfOperations("LinkedList insert on the end", linkedIntegers, (list) -> {
+            for (int i = 0; i < operateNumbersQuantity; i++) {
+                list.add(i);
+            }
+            return list;
+        });
 
         //3. Update 1000 elements from the beginning, from the middle and from the end of ones. Compare time intervals.
-
         //Update 1000 elements from the beginning of ArrayList
-        start = LocalDateTime.now();
-        System.out.println("ArrayList update from the beginning start: " + start);
-        for (int i = 0; i < operateNumbersQuantity; i++) {
-            arrayIntegers.set(i, operateNumbersQuantity - i);
-        }
-        finish = LocalDateTime.now();
-        System.out.println("ArrayList update from the beginning finish: " + finish);
-        System.out.println("Total time: " + Duration.between(start, finish).toMillis());
+        loggingTimeOfOperations("ArrayList update from the beginning", arrayIntegers, (list) -> {
+            for (int i = 0; i < operateNumbersQuantity; i++) {
+                list.set(i, operateNumbersQuantity - i);
+            }
+            return list;
+        });
 
         //Update 1000 elements from the middle of ArrayList
-        start = LocalDateTime.now();
-        System.out.println("ArrayList update from the middle start: " + start);
-        middleOfList = arrayIntegers.size()/2;
-        for (int i = 0; i < operateNumbersQuantity; i++) {
-            arrayIntegers.set(middleOfList+i, operateNumbersQuantity - i);
-        }
-        finish = LocalDateTime.now();
-        System.out.println("ArrayList update from the middle finish: " + finish);
-        System.out.println("Total time: " + Duration.between(start, finish).toMillis());
+        loggingTimeOfOperations("ArrayList update from the middle", arrayIntegers, (list) -> {
+            int middleOfList = list.size()/2;
+            for (int i = 0; i < operateNumbersQuantity; i++) {
+                list.set(middleOfList + i, operateNumbersQuantity - i);
+            }
+            return list;
+        });
 
         //Update 1000 elements from the end of ArrayList
-        start = LocalDateTime.now();
-        System.out.println("ArrayList update from the end start: " + start);
-        for (int i = 0; i < operateNumbersQuantity; i++) {
-            arrayIntegers.set(arrayIntegers.size() - 1 - i, operateNumbersQuantity - i);
-        }
-        finish = LocalDateTime.now();
-        System.out.println("ArrayList update from the end finish: " + finish);
-        System.out.println("Total time: " + Duration.between(start, finish).toMillis());
+        loggingTimeOfOperations("ArrayList update from the end", arrayIntegers, (list) -> {
+            int indexOfLast = list.size() - 1;
+            for (int i = 0; i < operateNumbersQuantity; i++) {
+                list.set(indexOfLast - i, operateNumbersQuantity - i);
+            }
+            return list;
+        });
 
         //Update 1000 elements from the beginning of LinkedList
-        start = LocalDateTime.now();
-        System.out.println("LinkedList update from the beginning start: " + start);
-        for (int i = 0; i < operateNumbersQuantity; i++) {
-            linkedIntegers.set(i, operateNumbersQuantity - i);
-        }
-        finish = LocalDateTime.now();
-        System.out.println("LinkedList update from the beginning finish: " + finish);
-        System.out.println("Total time: " + Duration.between(start, finish).toMillis());
+        loggingTimeOfOperations("LinkedList update from the beginning", linkedIntegers, (list) -> {
+            for (int i = 0; i < operateNumbersQuantity; i++) {
+                list.set(i, operateNumbersQuantity - i);
+            }
+            return list;
+        });
 
         //Update 1000 elements from the middle of LinkedList
-        start = LocalDateTime.now();
-        System.out.println("LinkedList update from the middle start: " + start);
-        middleOfList = linkedIntegers.size()/2;
-        for (int i = 0; i < operateNumbersQuantity; i++) {
-            linkedIntegers.set(middleOfList+i, operateNumbersQuantity - i);
-        }
-        finish = LocalDateTime.now();
-        System.out.println("LinkedList update from the middle finish: " + finish);
-        System.out.println("Total time: " + Duration.between(start, finish).toMillis());
+        loggingTimeOfOperations("LinkedList update from the middle", linkedIntegers, (list) -> {
+            int middleOfList = list.size()/2;
+            for (int i = 0; i < operateNumbersQuantity; i++) {
+                list.set(middleOfList + i, operateNumbersQuantity - i);
+            }
+            return list;
+        });
 
         //Update 1000 elements from the end of LinkedList
-        start = LocalDateTime.now();
-        System.out.println("LinkedList update from the end start: " + start);
-        for (int i = 0; i < operateNumbersQuantity; i++) {
-            linkedIntegers.set(linkedIntegers.size() - 1 - i, operateNumbersQuantity - i);
-        }
-        finish = LocalDateTime.now();
-        System.out.println("LinkedList update from the end finish: " + finish);
-        System.out.println("Total time: " + Duration.between(start, finish).toMillis());
+        loggingTimeOfOperations("LinkedList update from the end", linkedIntegers, (list) -> {
+            int indexOfLast = list.size() - 1;
+            for (int i = 0; i < operateNumbersQuantity; i++) {
+                list.set(indexOfLast - i, operateNumbersQuantity - i);
+            }
+            return list;
+        });
 
         //4. Delete 1000 elements from the beginning, from the middle and from the end of ones. Compare time intervals.
         //Delete 1000 elements from the beginning of ArrayList
-        start = LocalDateTime.now();
-        System.out.println("ArrayList delete from the beginning start: " + start);
-        for (int i = 0; i < operateNumbersQuantity; i++) {
-            arrayIntegers.remove(0);
-        }
-        finish = LocalDateTime.now();
-        System.out.println("ArrayList delete from the beginning finish: " + finish);
-        System.out.println("Total time: " + Duration.between(start, finish).toMillis());
-
+        loggingTimeOfOperations("ArrayList delete from the beginning", arrayIntegers, (list) -> {
+            for (int i = 0; i < operateNumbersQuantity; i++) {
+                list.remove(0);
+            }
+            return list;
+        });
         //Delete 1000 elements from the middle of ArrayList
-        start = LocalDateTime.now();
-        System.out.println("ArrayList delete from the middle start: " + start);
-        middleOfList = arrayIntegers.size()/2;
-        for (int i = 0; i < operateNumbersQuantity; i++) {
-            arrayIntegers.remove(middleOfList);
-        }
-        finish = LocalDateTime.now();
-        System.out.println("ArrayList delete from the middle finish: " + finish);
-        System.out.println("Total time: " + Duration.between(start, finish).toMillis());
+        loggingTimeOfOperations("ArrayList delete from the middle", arrayIntegers, (list) -> {
+            for (int i = 0; i < operateNumbersQuantity; i++) {
+                list.remove(list.size()/2);
+            }
+            return list;
+        });
 
         //Delete 1000 elements from the end of ArrayList
-        start = LocalDateTime.now();
-        System.out.println("ArrayList delete from the end start: " + start);
-        for (int i = 0; i < operateNumbersQuantity; i++) {
-            arrayIntegers.remove(arrayIntegers.size()-1);
-        }
-        finish = LocalDateTime.now();
-        System.out.println("ArrayList delete from the end finish: " + finish);
-        System.out.println("Total time: " + Duration.between(start, finish).toMillis());
+        loggingTimeOfOperations("ArrayList delete from the end", arrayIntegers, (list) -> {
+            int indexOfLast = list.size() - 1;
+            for (int i = 0; i < operateNumbersQuantity; i++) {
+                list.remove(indexOfLast - i);
+            }
+            return list;
+        });
 
         //Delete 1000 elements from the beginning of LinkedList
-        start = LocalDateTime.now();
-        System.out.println("LinkedList delete from the beginning start: " + start);
-        for (int i = 0; i < operateNumbersQuantity; i++) {
-            linkedIntegers.remove(0);
-        }
-        finish = LocalDateTime.now();
-        System.out.println("LinkedList delete from the beginning finish: " + finish);
-        System.out.println("Total time: " + Duration.between(start, finish).toMillis());
-
+        loggingTimeOfOperations("LinkedList delete from the beginning", linkedIntegers, (list) -> {
+            for (int i = 0; i < operateNumbersQuantity; i++) {
+                list.remove(0);
+            }
+            return list;
+        });
         //Delete 1000 elements from the middle of LinkedList
-        start = LocalDateTime.now();
-        System.out.println("LinkedList delete from the middle start: " + start);
-        middleOfList = linkedIntegers.size()/2;
-        for (int i = 0; i < operateNumbersQuantity; i++) {
-            linkedIntegers.remove(middleOfList);
-        }
-        finish = LocalDateTime.now();
-        System.out.println("LinkedList delete from the middle finish: " + finish);
-        System.out.println("Total time: " + Duration.between(start, finish).toMillis());
-
+        loggingTimeOfOperations("LinkedList delete from the middle", linkedIntegers, (list) -> {
+            for (int i = 0; i < operateNumbersQuantity; i++) {
+                list.remove(list.size()/2);
+            }
+            return list;
+        });
         //Delete 1000 elements from the end of LinkedList
-        start = LocalDateTime.now();
-        System.out.println("LinkedList delete from the end start: " + start);
-        for (int i = 0; i < operateNumbersQuantity; i++) {
-            linkedIntegers.remove(linkedIntegers.size() - 1);
-        }
-        finish = LocalDateTime.now();
-        System.out.println("LinkedList delete from the end finish: " + finish);
-        System.out.println("Total time: " + Duration.between(start, finish).toMillis());
+        loggingTimeOfOperations("LinkedList delete from the end", linkedIntegers, (list) -> {
+            int indexOfLast = list.size() - 1;
+            for (int i = 0; i < operateNumbersQuantity; i++) {
+                list.remove(indexOfLast - i);
+            }
+            return list;
+        });
 
-//        start = LocalDateTime.now();
-//        System.out.println("LinkedList creation start: " + start);
-//        finish = LocalDateTime.now();
-//        System.out.println("LinkedList creation finish: " + finish);
-//        System.out.println("Total time: " + Duration.between(start, finish).toMillis());
     }
 
-//    TODO: complete this method
-//    private static void loggingTimeOfOperations(String message, Expression func) throws Exception {
-//        LocalDateTime start = LocalDateTime.now();
-//        System.out.println(message + " start: " + start);
-//        func.execute();
-//        LocalDateTime finish = LocalDateTime.now();
-//        System.out.println(message + " finish: " + finish);
-//        System.out.println("Total time: " + Duration.between(start, finish).toMillis());
-//    }
+    private static List<Integer> loggingTimeOfOperations(String message, List<Integer> list, Function<List<Integer>, List<Integer>> func) {
+        LocalDateTime start = LocalDateTime.now();
+        System.out.println(message + " start: " + start);
+        List<Integer> result = func.apply(list);
+        LocalDateTime finish = LocalDateTime.now();
+        System.out.println(message + " finish: " + finish);
+        System.out.println("Total time: " + Duration.between(start, finish).toMillis());
+        return result;
+    }
 }
