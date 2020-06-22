@@ -24,3 +24,6 @@ hs_err_pid*
 
 # Intellij IDEA files
 /.idea
+
+#Meta info
+/out/production/Java Development/META-INF
