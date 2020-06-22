@@ -83,11 +83,11 @@ public class DraftBeer implements Beer {
     public String toString() {
         return "DraftBeer{" +
                 "name='" + name + '\'' +
-                ", volume=" + volume +
+                ", volume=" + volume + " litre" +
                 ", manufacturer='" + manufacturer + '\'' +
                 ", type=" + type +
-                ", alcohol=" + alcohol +
-                ", pricePerLitre=" + pricePerLitre +
+                ", alcohol=" + alcohol + "%" +
+                ", pricePerLitre=" + pricePerLitre + " USD" +
                 '}';
     }
 

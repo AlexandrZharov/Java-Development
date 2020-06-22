@@ -84,11 +84,11 @@ public class BottledBeer implements Beer {
     public String toString() {
         return "BottledBeer{" +
                 "name='" + name + '\'' +
-                ", bottleVolume=" + bottleVolume +
+                ", bottleVolume=" + bottleVolume + " litre" +
                 ", manufacturer='" + manufacturer + '\'' +
                 ", type=" + type +
-                ", alcohol=" + alcohol +
-                ", price=" + price +
+                ", alcohol=" + alcohol + "%" +
+                ", price=" + price + " USD" +
                 '}';
     }
 }

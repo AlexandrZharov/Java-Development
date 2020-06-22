@@ -35,7 +35,7 @@ public class Main {
 
         BottledBeer bottledBeer1 = new BottledBeer("BottledBeer1", 2, "M5", BeerType.DARK_LIGHT, 8, 16);
         BottledBeer bottledBeer2 = new BottledBeer("BottledBeer2", 1, "M4", BeerType.DARK, 10, 11);
-        BottledBeer bottledBeer3 = new BottledBeer("BottledBeer3", 1.5f, "M3", BeerType.LIGHT, 12, 15);
+        BottledBeer bottledBeer3 = new BottledBeer("BottledBeer3", 1.5, "M3", BeerType.LIGHT, 12, 15);
         BottledBeer bottledBeer4 = new BottledBeer("BottledBeer4", 1, "M2", BeerType.DARK, 14, 12);
         BottledBeer bottledBeer5 = new BottledBeer("BottledBeer5", 2, "M1", BeerType.DARK_LIGHT, 16, 20);
 
@@ -61,20 +61,20 @@ public class Main {
         Beer highestPriceBeer = beerList.stream()
                 .max(Comparator.comparingDouble(Beer::getPrice)).
                         orElse(null);
-        System.out.println("Highest Price Beer is " + highestPriceBeer.toString() + " with price "  + highestPriceBeer.getPrice());
+        System.out.println("Highest Price Beer is " + highestPriceBeer.toString() + " with price "  + highestPriceBeer.getPrice() + " USD");
 
         // Find the lowest price beer
 
         Beer lowestPriceBeer  = beerList.stream()
                 .min(Comparator.comparingDouble(Beer::getPrice)).
                         orElse(null);
-        System.out.println("Lowest Price Beer is " + lowestPriceBeer.toString() + " with price "  + lowestPriceBeer.getPrice());
+        System.out.println("Lowest Price Beer is " + lowestPriceBeer.toString() + " with price "  + lowestPriceBeer.getPrice() + " USD");
 
         // The average price of beer
 
         double avg = beerList.stream().mapToDouble(Beer::getPrice)
                 .average().orElse(0);
-        System.out.println("The average price of beer is " + avg);
+        System.out.println("The average price of beer is " + avg + " USD");
 
         // What beer expensive: draft beer or bottled beer
 
