@@ -1,4 +1,4 @@
-package finalTask;
+package finalTask.task1;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -6,10 +6,37 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * GLOSSARY Main class
+ *
+ * Version info 1
+ *
+ * Copyright Aleksandr Zharov KHNEU
+ *
+ * 1.1. Download a text about Harry Potter.
+ *
+ * 1.2. For each distinct word in the text calculate the number of occurrence.
+ *
+ * 1.3. Use RegEx..
+ *
+ * 1.4. Sort in the DESC mode by the number of occurrence..
+ *
+ * 1.5. Find the first 20 pairs.
+ *
+ * 1.6. Find all the proper names
+ *
+ * 1.7. Count them and arrange in alphabetic order.
+ *
+ * 1.8. First 20 pairs and names write into to a file test.txt
+ *
+ * 1.9. Create a fine header for the file
+ *
+ * 1.10 Use Java Collections to demonstrate your experience (Map, List )
+ */
 public class Glossary {
 
     public static void main(String[] args) throws IOException {
-        File file = new File("./src/finalTask/harry.txt");
+        File file = new File("./src/finalTask/task1/harry.txt");
         String text = new String(Files.readAllBytes(file.toPath()));
 
         Map<String, Integer> duplicates = findNumberOfDuplicates(text);
@@ -20,7 +47,7 @@ public class Glossary {
 
         Set<String> properNames = findProperNames(text);
 
-        FileWriter fileWriter = new FileWriter("./src/finalTask/test.txt");
+        FileWriter fileWriter = new FileWriter("./src/finalTask/task1/test.txt");
         PrintWriter printWriter = new PrintWriter(fileWriter);
         printWriter.println("First 20 Duplicates!");
         for (Map.Entry<String, Integer> entry:first20Duplicates.entrySet()) {
@@ -33,6 +60,12 @@ public class Glossary {
         printWriter.close();
     }
 
+    /**
+     *
+     * @param text  - input text
+     *
+     * @return map with words as keys and number of duplicates as value
+     */
     static Map<String, Integer> findNumberOfDuplicates(String text) {
         String[] wordsArray = text.trim()
                 .replaceAll("[^a-zA-Z0-9\\s'-]","")
@@ -47,6 +80,14 @@ public class Glossary {
         return result;
     }
 
+    /**
+     *
+     * @param map  - input map
+     *
+     * @param order  - sort order
+     *
+     * @return map sorted by value
+     */
     public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map, Comparator order) {
         List<Map.Entry<K, V>> list = new ArrayList<>(map.entrySet());
         list.sort(Map.Entry.comparingByValue(order));
@@ -59,10 +100,18 @@ public class Glossary {
         return result;
     }
 
-    public static <K,V> Map<K, V> putFirstEntries(int max, Map<K,V> source) {
+    /**
+     *
+     * @param map  - input map
+     *
+     * @param max  - number of values which will be taken from map
+     *
+     * @return map with size equals max
+     */
+    public static <K,V> Map<K, V> putFirstEntries(int max, Map<K,V> map) {
         int count = 0;
         Map<K,V> result = new LinkedHashMap<>();
-        for (Map.Entry<K,V> entry:source.entrySet()) {
+        for (Map.Entry<K,V> entry:map.entrySet()) {
             if (count >= max) break;
 
             result.put(entry.getKey(), entry.getValue());
@@ -71,6 +120,12 @@ public class Glossary {
         return result;
     }
 
+    /**
+     *
+     * @param text  - input text
+     *
+     * @return set of proper names
+     */
     private static Set<String> findProperNames(String text) {
         List<String> wordsList = Arrays.asList(text.trim()
                 .replaceAll("[^a-zA-Z0-9\\s]","")
