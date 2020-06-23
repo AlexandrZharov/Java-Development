@@ -27,3 +27,5 @@ hs_err_pid*
 
 #Meta info
 /out/production/Java Development/META-INF
+
+logs.txt
