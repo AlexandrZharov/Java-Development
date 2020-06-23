@@ -7,12 +7,28 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * LogsParser class
+ *
+ * Version info 1
+ *
+ * Copyright Aleksandr Zharov KHNEU
+ *
+ * Home task. Files management
+ *
+ * 1. Parse the file logs.txt (see the attachment).  Extract to a separate file all the logs.
+ *
+ * 2. Calculate the total number of logs (lines).
+ *
+ * 3. Calculate the total  number of  ERROR logs. Use previous skills - String.split
+ *
+ * 4.  Calculate the total number of ERROR logs. Use Files.lines.
+ *
+ * 5. Compare two results.
+ */
 public class LogsParser {
     public static void main(String[] args) throws IOException {
         String fileName = "./logs.txt";
