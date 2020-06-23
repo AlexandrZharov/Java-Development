@@ -50,10 +50,13 @@ public class Glossary {
         FileWriter fileWriter = new FileWriter("./src/finalTask/task1/test.txt");
         PrintWriter printWriter = new PrintWriter(fileWriter);
         printWriter.println("First 20 Duplicates!");
+        printWriter.println("----------------------------------------------------------------------------------------");
         for (Map.Entry<String, Integer> entry:first20Duplicates.entrySet()) {
             printWriter.println(entry.getKey() + ": " + entry.getValue());
         }
+        printWriter.println("----------------------------------------------------------------------------------------");
         printWriter.println("NAMES!");
+        printWriter.println("----------------------------------------------------------------------------------------");
         for (String name : properNames) {
             printWriter.println(name);
         }
