@@ -5,7 +5,8 @@ import java.time.LocalDate;
 /**
  * Student POJO class
  *
- * Version info 1
+ * @author Aleksandr Zharov
+ * @version 1
  *
  * Copyright (c) Aleksandr Zharov KHNEU
  *
@@ -31,9 +32,9 @@ public class Student {
     private String gender;
     private String formOfStudy;
 
-    private boolean isStudentBudget;
-    private boolean getsAScholarship;
-    private String faculty;
+    private boolean isStudentBudget; //true if student gets a free education or false if not
+    private boolean getsAScholarship; //true if student gets a scholarship or false if not
+    private String department;
     private String specialty;
     private String groupNumber;
 
@@ -41,7 +42,7 @@ public class Student {
     private boolean isGroupLeader;
     private boolean isBeneficiary;
     private String beneficiaryCategory;
-    private String phoneNumber;
+    private String phoneNumber; //contact phone number
 
     private String eMail;
     private String parentFirstName;
@@ -145,12 +146,12 @@ public class Student {
         this.getsAScholarship = getsAScholarship;
     }
 
-    public String getFaculty() {
-        return faculty;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setFaculty(String faculty) {
-        this.faculty = faculty;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
     public String getSpecialty() {
@@ -312,8 +313,8 @@ public class Student {
             return this;
         }
 
-        public StudentBuilder setFaculty(String faculty) {
-            this.studentToBuild.setFaculty(faculty);
+        public StudentBuilder setDepartment(String department) {
+            this.studentToBuild.setDepartment(department);
             return this;
         }
 
@@ -374,6 +375,36 @@ public class Student {
 
         public StudentBuilder setParentPhoneNumber(String parentPhoneNumber) {
             this.studentToBuild.setParentPhoneNumber(parentPhoneNumber);
+            return this;
+        }
+
+        public StudentBuilder similarTo(Student student) {
+            this.studentToBuild.setStudentIDNumber(student.getStudentIDNumber());
+            this.studentToBuild.setFirstName(student.getFirstName());
+            this.studentToBuild.setLastName(student.getLastName());
+            this.studentToBuild.setPatronymic(student.getPatronymic());
+            this.studentToBuild.setBirthday(student.getBirthday());
+            this.studentToBuild.setAge(student.getAge());
+            this.studentToBuild.setHeight(student.getHeight());
+            this.studentToBuild.setWeight(student.getWeight());
+            this.studentToBuild.setGender(student.getGender());
+            this.studentToBuild.setFormOfStudy(student.getFormOfStudy());
+            this.studentToBuild.setStudentBudget(student.isStudentBudget());
+            this.studentToBuild.setGetsAScholarship(student.isGetsAScholarship());
+            this.studentToBuild.setDepartment(student.getDepartment());
+            this.studentToBuild.setSpecialty(student.getSpecialty());
+            this.studentToBuild.setGroupNumber(student.getGroupNumber());
+            this.studentToBuild.setCourse(student.getCourse());
+            this.studentToBuild.setGroupLeader(student.isGroupLeader());
+            this.studentToBuild.setBeneficiary(student.isBeneficiary());
+            this.studentToBuild.setBeneficiaryCategory(student.getBeneficiaryCategory());
+            this.studentToBuild.setPhoneNumber(student.getPhoneNumber());
+            this.studentToBuild.seteMail(student.geteMail());
+            this.studentToBuild.setParentFirstName(student.getParentFirstName());
+            this.studentToBuild.setParentLastName(student.getParentLastName());
+            this.studentToBuild.setParentPatronymic(student.getParentPatronymic());
+            this.studentToBuild.setParentPhoneNumber(student.getParentPhoneNumber());
+            this.studentToBuild.setParentPhoneNumber(student.getParentPhoneNumber());
             return this;
         }
 

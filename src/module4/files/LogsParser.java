@@ -13,7 +13,8 @@ import java.util.stream.Stream;
 /**
  * LogsParser class
  *
- * Version info 1
+ * @author Aleksandr Zharov
+ * @version 1
  *
  * Copyright Aleksandr Zharov KHNEU
  *

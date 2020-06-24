@@ -5,7 +5,8 @@ import module2.classes.Cube;
 /**
  * CubeFactory class
  *
- * Version info 1
+ * @author Aleksandr Zharov
+ * @version 1
  *
  * Copyright (c) Aleksandr Zharov KHNEU
  *
