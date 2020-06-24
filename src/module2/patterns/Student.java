@@ -7,7 +7,7 @@ import java.time.LocalDate;
  *
  * Version info 1
  *
- * Copyright Aleksandr Zharov KHNEU
+ * Copyright (c) Aleksandr Zharov KHNEU
  *
  * Programming patterns. Factory, Builder.
  *

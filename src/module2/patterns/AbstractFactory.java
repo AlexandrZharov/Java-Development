@@ -10,7 +10,7 @@ import java.util.Map;
  *
  * Version info 1
  *
- * Copyright Aleksandr Zharov KHNEU
+ * Copyright (c) Aleksandr Zharov KHNEU
  *
  * Programming patterns. Factory, Builder.
  *
@@ -20,6 +20,12 @@ import java.util.Map;
  */
 public class AbstractFactory {
 
+    /**
+     *
+     * @param type - type of three dimensional object(cube, cone, ...)
+     * @param params - parameters of object(width, height, angles, ...)
+     * @return new object
+     */
     public static ThreeDimensionalObject create(String type, Map<String, Object> params) {
         if(type.equals("Cube")) return new Cube(params);
         else return null;

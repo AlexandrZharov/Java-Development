@@ -7,7 +7,7 @@ import module2.classes.Cube;
  *
  * Version info 1
  *
- * Copyright Aleksandr Zharov KHNEU
+ * Copyright (c) Aleksandr Zharov KHNEU
  *
  * Programming patterns. Factory, Builder.
  *
@@ -16,6 +16,11 @@ import module2.classes.Cube;
  * 1. Factory.
  */
 public class CubeFactory {
+    /**
+     *
+     * @param side - side of cube
+     * @return new Cube object
+     */
     public static Cube create (int side) {
         if(side <= 0) {
             System.out.println("Error! Side of cube must be > 0!");
